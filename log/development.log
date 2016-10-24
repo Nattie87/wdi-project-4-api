@@ -25,3 +25,557 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 [0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "dave"], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "dave"], ["email", "dave@dave.com"], ["password_digest", "$2a$10$hEJe/AzPf8uc8LnHZPUVEu4CVucvr5FLocHZ.CMzy4u2/VzXLigCy"], ["created_at", 2016-10-24 10:08:08 UTC], ["updated_at", 2016-10-24 10:08:08 UTC]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/register" for 127.0.0.1 at 2016-10-24 11:28:49 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"email"=>"claire@claire.com", "username"=>"claire", "first_name"=>"Claire", "last_name"=>"Smith", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "authentication"=>{"email"=>"claire@claire.com", "username"=>"claire", "first_name"=>"Claire", "last_name"=>"Smith", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:17)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "claire"], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "claire"], ["first_name", "Claire"], ["last_name", "Smith"], ["email", "claire@claire.com"], ["password_digest", "$2a$10$k7H6o85SJYJbxXV6njM/TuL.gycVvDe2q3McKmwm8xSBYgCW/QeYy"], ["created_at", 2016-10-24 10:28:49 UTC], ["updated_at", 2016-10-24 10:28:49 UTC]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.41ms)
+Completed 200 OK in 115ms (Views: 13.2ms | ActiveRecord: 8.2ms)
+
+
+Started POST "/api/register" for 127.0.0.1 at 2016-10-24 11:29:28 +0100
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"email"=>"claire@claire.com", "username"=>"claire", "first_name"=>"Claire", "last_name"=>"Smit", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "authentication"=>{"email"=>"claire@claire.com", "username"=>"claire", "first_name"=>"Claire", "last_name"=>"Smit", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:17)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "claire"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 422 Unprocessable Entity in 77ms (Views: 3.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/register" for 127.0.0.1 at 2016-10-24 11:29:48 +0100
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"email"=>"claire@claire.com", "username"=>"claire", "first_name"=>"Claire", "last_name"=>"Smith", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "authentication"=>{"email"=>"claire@claire.com", "username"=>"claire", "first_name"=>"Claire", "last_name"=>"Smith", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:17)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "claire"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 422 Unprocessable Entity in 71ms (Views: 0.4ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/register" for 127.0.0.1 at 2016-10-24 11:29:50 +0100
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"email"=>"claire@claire.com", "username"=>"claire", "first_name"=>"Claire", "last_name"=>"Smith", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "authentication"=>{"email"=>"claire@claire.com", "username"=>"claire", "first_name"=>"Claire", "last_name"=>"Smith", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:17)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "claire"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 422 Unprocessable Entity in 70ms (Views: 0.5ms | ActiveRecord: 0.6ms)
+
+
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/api/login" for 127.0.0.1 at 2016-10-24 11:34:55 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AuthenticationsController#login as HTML
+  Parameters: {"email"=>"claire@claire.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"claire@claire.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "claire@claire.com"], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.33ms)
+Completed 200 OK in 97ms (Views: 12.9ms | ActiveRecord: 5.6ms)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2016-10-24 11:35:42 +0100
+Processing by AuthenticationsController#login as HTML
+  Parameters: {"email"=>"claire@claire.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"claire@claire.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "claire@claire.com"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 401 Unauthorized in 70ms (Views: 3.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/register" for 127.0.0.1 at 2016-10-24 12:00:40 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+SyntaxError (/Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:29: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/authentications_controller.rb:29: syntax error, unexpected keyword_end, expecting end-of-input
+Started POST "/api/register" for 127.0.0.1 at 2016-10-24 12:01:29 +0100
+  
+SyntaxError (/Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:29: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/authentications_controller.rb:29: syntax error, unexpected keyword_end, expecting end-of-input
+Started POST "/api/register" for 127.0.0.1 at 2016-10-24 12:03:00 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"username"=>"matt", "first_name"=>"Matt", "last_name"=>"Bradley", "email"=>"matt@matt.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "authentication"=>{"username"=>"matt", "first_name"=>"Matt", "last_name"=>"Bradley", "email"=>"matt@matt.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:26)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "matt"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["username", "matt"], ["first_name", "Matt"], ["last_name", "Bradley"], ["email", "matt@matt.com"], ["password_digest", "$2a$10$sO6FAd20kIVFoCN49fRE3unxqb2vdewuH6DHQNgitJy3Jtmw0.tWS"], ["created_at", 2016-10-24 11:03:00 UTC], ["updated_at", 2016-10-24 11:03:00 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.68ms)
+Completed 200 OK in 104ms (Views: 5.9ms | ActiveRecord: 6.2ms)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2016-10-24 12:03:24 +0100
+Processing by AuthenticationsController#login as HTML
+  Parameters: {"email"=>"matt@matt.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"matt@matt.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "matt@matt.com"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.26ms)
+Completed 200 OK in 73ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/posts" for 127.0.0.1 at 2016-10-24 12:10:56 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  
+ActionController::RoutingError (No route matches [POST] "/api/posts"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+Started POST "/api/posts" for 127.0.0.1 at 2016-10-24 12:13:13 +0100
+  
+ActionController::RoutingError (No route matches [POST] "/api/posts"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+Started POST "/api/posts" for 127.0.0.1 at 2016-10-24 12:13:15 +0100
+  
+ActionController::RoutingError (No route matches [POST] "/api/posts"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+Started POST "/api/posts" for 127.0.0.1 at 2016-10-24 12:13:32 +0100
+  
+ActionController::RoutingError (No route matches [POST] "/api/posts"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+Started POST "/api/posts" for 127.0.0.1 at 2016-10-24 12:13:35 +0100
+  
+ActionController::RoutingError (No route matches [POST] "/api/posts"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+Started GET "/api/posts" for 127.0.0.1 at 2016-10-24 12:14:10 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/api/posts"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+Started POST "/api/login" for 127.0.0.1 at 2016-10-24 12:15:34 +0100
+  
+ArgumentError (Before process_action callback :authenticate_user! has not been defined):
+  
+app/controllers/application_controller.rb:2:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<top (required)>'
+app/controllers/authentications_controller.rb:1:in `<top (required)>'
+Started POST "/api/login" for 127.0.0.1 at 2016-10-24 12:16:28 +0100
+Processing by AuthenticationsController#login as HTML
+  Parameters: {"email"=>"matt@matt.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"matt@matt.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "matt@matt.com"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.78ms)
+Completed 200 OK in 105ms (Views: 6.2ms | ActiveRecord: 8.9ms)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2016-10-24 12:18:52 +0100
+Processing by AuthenticationsController#login as HTML
+  Parameters: {"email"=>"matt@matt.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"matt@matt.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "matt@matt.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.19ms)
+Completed 200 OK in 68ms (Views: 1.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/posts" for 127.0.0.1 at 2016-10-24 12:19:14 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/api/posts"):
+  
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+Started GET "/api/users" for 127.0.0.1 at 2016-10-24 12:19:30 +0100
+Processing by UsersController#index as HTML
+  Parameters: {"email"=>"matt@matt.com", "password"=>"[FILTERED]", "user"=>{"email"=>"matt@matt.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.44ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2016-10-24 12:21:15 +0100
+Processing by UsersController#index as HTML
+  Parameters: {"email"=>"matt@matt.com", "password"=>"[FILTERED]", "user"=>{"email"=>"matt@matt.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.39ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/login" for ::1 at 2016-10-24 15:46:24 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by AuthenticationsController#login as HTML
+  Parameters: {"email"=>"natalie.huitson@gmail.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"natalie.huitson@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "natalie.huitson@gmail.com"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 401 Unauthorized in 17ms (Views: 4.4ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/api/login" for ::1 at 2016-10-24 15:46:27 +0100
+Processing by AuthenticationsController#login as HTML
+  Parameters: {"email"=>"natalie.huitson@gmail.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"natalie.huitson@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "natalie.huitson@gmail.com"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 401 Unauthorized in 3ms (Views: 1.1ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/register" for ::1 at 2016-10-24 15:48:00 +0100
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"user"=>{"username"=>"natty", "firstName"=>"nat", "lastName"=>"nat", "email"=>"nat@nat.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}, "authentication"=>{"user"=>{"username"=>"natty", "firstName"=>"nat", "lastName"=>"nat", "email"=>"nat@nat.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:26)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 422 Unprocessable Entity in 26ms (Views: 0.6ms | ActiveRecord: 4.6ms)
+
+
+Started POST "/api/register" for ::1 at 2016-10-24 15:48:00 +0100
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"user"=>{"username"=>"natty", "firstName"=>"nat", "lastName"=>"nat", "email"=>"nat@nat.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}, "authentication"=>{"user"=>{"username"=>"natty", "firstName"=>"nat", "lastName"=>"nat", "email"=>"nat@nat.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:26)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 422 Unprocessable Entity in 5ms (Views: 0.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/register" for ::1 at 2016-10-24 15:48:02 +0100
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"user"=>{"username"=>"natty", "firstName"=>"nat", "lastName"=>"nat", "email"=>"nat@nat.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}, "authentication"=>{"user"=>{"username"=>"natty", "firstName"=>"nat", "lastName"=>"nat", "email"=>"nat@nat.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:26)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 422 Unprocessable Entity in 6ms (Views: 0.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/login" for ::1 at 2016-10-24 15:50:41 +0100
+Processing by AuthenticationsController#login as HTML
+  Parameters: {"email"=>"natalie.huitson@gmail.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"natalie.huitson@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "natalie.huitson@gmail.com"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 401 Unauthorized in 2ms (Views: 0.6ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/login" for ::1 at 2016-10-24 15:51:33 +0100
+Processing by AuthenticationsController#login as HTML
+  Parameters: {"email"=>"clare@clare.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"clare@clare.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "clare@clare.com"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.14ms)
+Completed 401 Unauthorized in 3ms (Views: 1.3ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/login" for ::1 at 2016-10-24 15:51:37 +0100
+Processing by AuthenticationsController#login as HTML
+  Parameters: {"email"=>"claire@claire.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"claire@claire.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "claire@claire.com"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.82ms)
+Completed 200 OK in 84ms (Views: 5.6ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/register" for ::1 at 2016-10-24 16:00:13 +0100
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"user"=>{"username"=>"naz87", "firstName"=>"naz", "lastName"=>"naz", "email"=>"naz@naz1.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}, "authentication"=>{"user"=>{"username"=>"naz87", "firstName"=>"naz", "lastName"=>"naz", "email"=>"naz@naz1.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:26)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 422 Unprocessable Entity in 7ms (Views: 2.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/login" for ::1 at 2016-10-24 16:04:40 +0100
+Processing by AuthenticationsController#login as HTML
+  Parameters: {"email"=>"claire@claire.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"claire@claire.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "claire@claire.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.21ms)
+Completed 200 OK in 69ms (Views: 1.3ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/register" for ::1 at 2016-10-24 16:05:12 +0100
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"user"=>{"username"=>"caz87", "firstName"=>"caz", "lastName"=>"caz", "email"=>"caz@caz.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}, "authentication"=>{"user"=>{"username"=>"caz87", "firstName"=>"caz", "lastName"=>"caz", "email"=>"caz@caz.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:26)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.24ms)
+Completed 422 Unprocessable Entity in 9ms (Views: 2.3ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/api/register" for ::1 at 2016-10-24 16:08:30 +0100
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"user"=>{"username"=>"caz87", "firstName"=>"caz", "lastName"=>"caz", "email"=>"caz@caz.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}, "authentication"=>{"user"=>{"username"=>"caz87", "firstName"=>"caz", "lastName"=>"caz", "email"=>"caz@caz.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:26)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 422 Unprocessable Entity in 6ms (Views: 1.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/register" for ::1 at 2016-10-24 16:10:43 +0100
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"user"=>{"username"=>"caz87", "firstName"=>"caz", "lastName"=>"caz", "email"=>"caz@caz.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}, "authentication"=>{"user"=>{"username"=>"caz87", "firstName"=>"caz", "lastName"=>"caz", "email"=>"caz@caz.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:26)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 422 Unprocessable Entity in 6ms (Views: 1.2ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/api/register" for ::1 at 2016-10-24 16:10:43 +0100
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"user"=>{"username"=>"caz87", "firstName"=>"caz", "lastName"=>"caz", "email"=>"caz@caz.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}, "authentication"=>{"user"=>{"username"=>"caz87", "firstName"=>"caz", "lastName"=>"caz", "email"=>"caz@caz.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:26)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 422 Unprocessable Entity in 6ms (Views: 1.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/register" for ::1 at 2016-10-24 16:14:53 +0100
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"user"=>{"username"=>"caz1", "firstName"=>"caz", "lastName"=>"caz", "email"=>"caz@caz.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}, "authentication"=>{"user"=>{"username"=>"caz1", "firstName"=>"caz", "lastName"=>"caz", "email"=>"caz@caz.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:26)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 422 Unprocessable Entity in 5ms (Views: 1.1ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/register" for ::1 at 2016-10-24 16:15:56 +0100
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"user"=>{"username"=>"f"}, "authentication"=>{"user"=>{"username"=>"f"}}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:26)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 422 Unprocessable Entity in 5ms (Views: 1.0ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/register" for ::1 at 2016-10-24 16:24:41 +0100
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"user"=>{"username"=>"h"}, "authentication"=>{"user"=>{"username"=>"h"}}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:26)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 422 Unprocessable Entity in 6ms (Views: 1.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/api/login" for ::1 at 2016-10-24 16:34:01 +0100
+Processing by AuthenticationsController#login as HTML
+  Parameters: {"email"=>"claire@claire.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"claire@claire.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "claire@claire.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.28ms)
+Completed 200 OK in 69ms (Views: 1.4ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/register" for ::1 at 2016-10-24 16:34:25 +0100
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"user"=>{"username"=>"john", "firstName"=>"john", "lastName"=>"john", "image"=>"http://fillmurray.com/300/300", "email"=>"johnnie@johnnie.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}, "authentication"=>{"user"=>{"username"=>"john", "firstName"=>"john", "lastName"=>"john", "image"=>"http://fillmurray.com/300/300", "email"=>"johnnie@johnnie.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:26)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 422 Unprocessable Entity in 6ms (Views: 1.3ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/api/register" for ::1 at 2016-10-24 16:57:16 +0100
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"username"=>"nat", "firstName"=>"nat", "lastName"=>"nat", "image"=>"nat", "email"=>"nat@nat.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "authentication"=>{"username"=>"nat", "firstName"=>"nat", "lastName"=>"nat", "image"=>"nat", "email"=>"nat@nat.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:26)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "nat"], ["LIMIT", 1]]
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "nat"], ["email", "nat@nat.com"], ["password_digest", "$2a$10$HPGNgs6BxvHpd3QVBlsuC.ltcAi78Jz8ZcpxOHH0LhND2QSU20JRy"], ["created_at", 2016-10-24 15:57:16 UTC], ["updated_at", 2016-10-24 15:57:16 UTC]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.24ms)
+Completed 200 OK in 79ms (Views: 2.0ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/api/login" for ::1 at 2016-10-24 16:59:35 +0100
+Processing by AuthenticationsController#login as HTML
+  Parameters: {"email"=>"nat@nat.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"nat@nat.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "nat@nat.com"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.25ms)
+Completed 200 OK in 75ms (Views: 1.8ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/api/register" for ::1 at 2016-10-24 17:00:22 +0100
+Processing by AuthenticationsController#register as HTML
+  Parameters: {"username"=>"caz87", "firstName"=>"caz", "lastName"=>"caz", "image"=>"http://fillmurray.com/200/300", "email"=>"caz@caz.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]", "authentication"=>{"username"=>"caz87", "firstName"=>"caz", "lastName"=>"caz", "image"=>"http://fillmurray.com/200/300", "email"=>"caz@caz.com", "password"=>"[FILTERED]", "passwordConfirmation"=>"[FILTERED]"}}
+DEPRECATION WARNING: Method to_hash is deprecated and will be removed in Rails 5.1, as `ActionController::Parameters` no longer inherits from hash. Using this deprecated behavior exposes potential security problems. If you continue to use this method you may be creating a security vulnerability in your app that can be exploited. Instead, consider using one of these documented methods which are not deprecated: http://api.rubyonrails.org/v5.0.0.1/classes/ActionController/Parameters.html (called from merge! at /Users/nataliehuitson/development/wdi-project-4/wdi-project-4-api/app/controllers/authentications_controller.rb:26)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "caz87"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "caz87"], ["email", "caz@caz.com"], ["password_digest", "$2a$10$e/Xjw9uAL931Osf2zNtJTu349jDYuVUGaxD7Uv70B8X9jKaNzPmR."], ["created_at", 2016-10-24 16:00:22 UTC], ["updated_at", 2016-10-24 16:00:22 UTC]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.23ms)
+Completed 200 OK in 73ms (Views: 2.1ms | ActiveRecord: 2.4ms)
+
+

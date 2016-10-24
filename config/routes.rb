@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  # http://localhost:3000/api
   scope :api do
     resources :users
+    post 'register', to: 'authentications#register'
+    post 'login', to: 'authentications#login'
   end
 end
