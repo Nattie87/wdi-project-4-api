@@ -9,7 +9,7 @@ last_name: "Albarn",
 email: "damon@blur.com",
 password: "password",
 password_confirmation: "password",
-image: File.open(File.join(Rails.root, '/db/images/damon.jpg'))
+image: '/db/images/damon.jpg'
 )
 
 user2 = User.create!(
@@ -19,7 +19,7 @@ last_name: "Dornan",
 email: "jamie@thefall.com",
 password: "password",
 password_confirmation: "password",
-image: File.open(File.join(Rails.root, '/db/images/jamie.jpg'))
+image: '/db/images/jamie.jpg'
 )
 
 user3 = User.create!(
@@ -29,7 +29,7 @@ last_name: "Purple",
 email: "prince@purple.com",
 password: "password",
 password_confirmation: "password",
-image: File.open(File.join(Rails.root, '/db/images/prince.jpg'))
+image: '/db/images/prince.jpg'
 )
 
 user4 = User.create!(
@@ -39,7 +39,7 @@ last_name: "King",
 email: "william@royal.com",
 password: "password",
 password_confirmation: "password",
-image: File.open(File.join(Rails.root, '/db/images/william.jpg'))
+image: '/db/images/william.jpg'
 )
 
 post1 = user1.posts.create!(
